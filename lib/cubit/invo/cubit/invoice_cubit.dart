@@ -1,5 +1,5 @@
 import 'package:dr_mazage_coffee/main.dart';
-import 'package:dr_mazage_coffee/models/Invoice_Item.dart';
+import 'package:dr_mazage_coffee/models/invoice_item.dart';
 import 'package:dr_mazage_coffee/models/product.dart';
 import 'package:dr_mazage_coffee/repository/invoice_repo.dart';
 import 'package:dr_mazage_coffee/services/db_.dart';

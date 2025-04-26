@@ -1,4 +1,3 @@
-import 'package:dr_mazage_coffee/models/Invoice_Item.dart';
 import 'package:dr_mazage_coffee/services/db_.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -6,8 +5,7 @@ import 'package:intl/intl.dart';
 class InvoiceDetailsPage extends StatelessWidget {
   final int invoiceId;
 
-  const InvoiceDetailsPage({required this.invoiceId, Key? key})
-      : super(key: key);
+  const InvoiceDetailsPage({required this.invoiceId, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -12,7 +12,7 @@ class MenuItems {
       name: 'المنتجات',
       page: ProductPage(),
     ),
-     MenuDetails(
+     const MenuDetails(
       icon: Icons.receipt,
       name: 'الفواتير',
       page: AdminInvoicesPage(),

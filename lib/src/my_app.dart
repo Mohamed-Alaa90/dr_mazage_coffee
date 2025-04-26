@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../pages/login/screens/login_page.dart';
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

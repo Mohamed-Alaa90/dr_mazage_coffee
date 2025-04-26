@@ -1,5 +1,5 @@
 import 'package:dr_mazage_coffee/cubit/invo/cubit/invo_list_cubit.dart';
-import 'package:dr_mazage_coffee/models/Invoice.dart';
+import 'package:dr_mazage_coffee/models/invoice.dart';
 import 'package:dr_mazage_coffee/pages/admin/widgets/invoice_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

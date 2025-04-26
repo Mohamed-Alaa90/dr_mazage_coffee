@@ -1,6 +1,6 @@
 import 'package:dr_mazage_coffee/cubit/invo/cubit/invoice_cubit.dart';
 import 'package:dr_mazage_coffee/cubit/product/cubit/product_cubit.dart';
-import 'package:dr_mazage_coffee/models/Invoice_Item.dart';
+import 'package:dr_mazage_coffee/models/invoice_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

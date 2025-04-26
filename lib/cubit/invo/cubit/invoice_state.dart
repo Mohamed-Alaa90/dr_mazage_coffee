@@ -1,4 +1,5 @@
-import 'package:dr_mazage_coffee/models/Invoice.dart';
+
+import '../../../models/invoice.dart';
 
 abstract class InvoiceState  {
   const InvoiceState();

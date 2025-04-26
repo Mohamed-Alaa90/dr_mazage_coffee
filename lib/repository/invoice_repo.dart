@@ -1,6 +1,6 @@
 import 'dart:developer';
-import 'package:dr_mazage_coffee/models/Invoice.dart';
-import 'package:dr_mazage_coffee/models/Invoice_Item.dart';
+import 'package:dr_mazage_coffee/models/invoice.dart';
+import 'package:dr_mazage_coffee/models/invoice_item.dart';
 import 'package:dr_mazage_coffee/services/db_.dart';
 
 class InvoiceRepository {

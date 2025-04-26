@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:dr_mazage_coffee/cubit/user/auth_state.dart';
 import 'package:dr_mazage_coffee/repository/user_repo.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthState> {
