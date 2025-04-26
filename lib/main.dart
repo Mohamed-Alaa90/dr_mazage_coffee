@@ -1,48 +1,42 @@
-import 'package:dr_mazage_coffee/cubit/product/product_cubit.dart';
-import 'package:dr_mazage_coffee/screens/splash.dart';
+import 'package:dr_mazage_coffee/cubit/invo/cubit/invo_list_cubit.dart';
+import 'package:dr_mazage_coffee/cubit/invo/cubit/invoice_cubit.dart';
+import 'package:dr_mazage_coffee/cubit/product/cubit/product_cubit.dart';
+import 'package:dr_mazage_coffee/cubit/user/auth_cubit.dart';
+import 'package:dr_mazage_coffee/repository/invoice_repo.dart';
+import 'package:dr_mazage_coffee/repository/product_repo.dart';
+import 'package:dr_mazage_coffee/repository/user_repo.dart';
+import 'package:dr_mazage_coffee/services/db_.dart';
+import 'package:dr_mazage_coffee/src/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-Future<void> main() async {
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Supabase.initialize(
-    url: 'https://twmlwyugpopwvdbsjylg.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3bWx3eXVncG9wd3ZkYnNqeWxnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzMTAzOTAsImV4cCI6MjA1OTg4NjM5MH0.9e9w5iJZb50zR1hBONo4LLOO5q9-KkHhWX1DOvTsr6s',
-  );
+  final database = DatabaseHelper();
+  final productRepo = ProductRepo(database);
+  final userRepo = UserRepo(database);
+  final invoRepo = InvoiceRepository();
+  sqfliteFfiInit();
+  databaseFactory = databaseFactoryFfi;
+  
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => ProductCubit(Supabase.instance.client),
+        BlocProvider<ProductCubit>(
+          create: (context) => ProductCubit(productRepo)..getAllProducts(),
         ),
+        BlocProvider<AuthCubit>(
+          create: (context) => AuthCubit(userRepo),
+        ),
+        BlocProvider(
+          create: (context) => InvoiceCubit(invoRepo),
+        ),
+        BlocProvider(
+          create: (context) => InvoicesListCubit(invoRepo),
+        )
       ],
-      // This is the root widget of your application.
-      child: MyApp(),
+      child:  MyApp(),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Dr Mazag',
-          home: const Splash(),
-        );
-      },
-    );
-  }
 }
